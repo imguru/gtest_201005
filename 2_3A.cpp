@@ -21,9 +21,14 @@ public:
 // TestSuite -> CalculatorTest / CalculatorSpec
 
 // 3A
-// 1. Arrange: 객체를 생성하고, 필요한 경우 설정하고 준비한다.
-// 2. Act: 객체의 작용을 가한다.
-// 3. Assert: 기대하는 바를 단언한다.
+// 1. Arrange: 객체를 생성하고, 필요한 경우 설정하고 준비한다. - Given
+// 2. Act: 객체의 작용을 가한다. - When
+// 3. Assert: 기대하는 바를 단언한다. - Then
+
+// TDD(Test Driven Development) vs BDD(Behavior Driven Development)
+//  => 거의 차이가 없다.
+//    : 용어, 테스트를 작성하는 스타일
+//   BDD: 강력한 Matcher를 제공한다.
 
 // 단위 테스트 코드의 품질 - Effective Unit Testing
 // 1. 가독성
@@ -39,12 +44,11 @@ public:
 //   => 테스트 유틸리티 함수를 이용해서, 별도의 함수나 클래스로 분리해서 사용해야 한다.
 //   => 단언 매크로 함수를 이용하면 된다.
 
-
 #define SPEC printf
 
 TEST(CalculatorTest, PressPlus_2Plus2_Diplays4) {
 	SPEC("PressPlus: 2 더하기 2를 하였을 때, 4의 결과가 나오는지 검증한다.\n");
-	// Arrange
+	// Arrange - Fixture
 	Calculator* calc = new Calculator;
 
 	// Act
