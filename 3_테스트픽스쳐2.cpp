@@ -1,6 +1,6 @@
 class Calculator {
 public:
-	double Display() { return 0; }
+	double Display() { return 4; }
 
 	void Enter(double v) {}
 	void PressPlus() {}
@@ -30,6 +30,14 @@ public:
 
 class CalculatorTest : public testing::Test {
 protected:
+	CalculatorTest() {
+		printf("CalculatorTest()\n");
+	}
+	
+	~CalculatorTest() {
+		printf("~CalculatorTest()\n");
+	}
+
 	Calculator* calc;
 
 	// 각 테스트케이스를 수행하기 전에, 자동적으로 호출된다.
@@ -79,3 +87,43 @@ TEST_F(CalculatorTest, PlusTest) {
 		FAIL() << "2 + 2 하였을 때";
 	}
 }
+
+
+// 테스트 프레임워크(xUnit Test Framework)가 테스트 케이스를 수행하는 흐름
+// => 신선한 픽스쳐 전략(기본)
+// CalculatorTest* ts = new CalculatorTest();
+// ts->SetUp();
+// ts->Test1();
+// ts->TearDown();
+//
+// CalculatorTest* ts = new CalculatorTest();
+// ts->SetUp();
+// ts->Test2();
+// ts->TearDown();
+// delete ts;
+//
+// CalculatorTest* ts = new CalculatorTest();
+// ts->SetUp();
+// ts->Test3();
+// ts->TearDown();
+// delete ts;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
