@@ -65,11 +65,53 @@ TEST(CalculatorTest, PlusTest) {
 #if 1
 #include <gtest/gtest.h>
 
+
+#if 0
+
+
+// TEST vs TEST_F
+TEST(SampleTest, foo) {}
+TEST(SampleTest, goo) {}
+
+//----------
+class SampleTest.foo : public ::testing::Test {};
+class SampleTest.goo : public ::testing::Test {};
+
+//  testing::Test
+//        |
+// SampleTest.foo / SampleTest.goo
+
+
+class SampleTest : public testing::Test {
+protected: // !!!
+};
+
+TEST_F(SampleTest, foo) {}
+TEST_F(SampleTest, goo) {}
+
+class SampleTest.foo : public SampleTest {};
+class SampleTest.goo : public SampleTest {};
+
+// testing::Test
+//      |
+//  SampleTest
+//      |
+//  SampleTest.foo / SampleTest.goo
+
+
+#endif
+
+
+
+
+
+
+
+
 // 픽스쳐 설치 방법 
 // 2. Delegate Setup(위임 설치)
 //   방법: 픽스쳐 설치에 대한 코드를 별도의 테스트 유틸리티 함수를 통해 모듈화한다.
 //         전역 함수로 제공하는 것이 아니라, CalculatorTest의 TestSuite 안에서 사용할 수 있도록 해야 한다.
-
 
 //  1) CalculatorTest - TestSuite을 명시적으로 정의해야 합니다.
 class CalculatorTest : public testing::Test {
