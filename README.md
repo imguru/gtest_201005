@@ -21,7 +21,7 @@
 $ googletest/googletest/scripts/fuse_gtest_files.py ~/chansik.yun
 
 $ g++ gtest/gtest-all.cc -c -I.
-$ g++ gtest/googletest/googletest/gtest_main.cc -c -I.
+$ g++ googletest/googletest/src/gtest_main.cc -c -I.
 $ ar rcv libgtest.a gtest-all.o gtest_main.o
 
 ```
