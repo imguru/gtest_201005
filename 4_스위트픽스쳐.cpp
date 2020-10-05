@@ -40,6 +40,7 @@ public:
 //           TestCase 100   =>        TestCase 25
 //                                 SampleTest2
 //                                    TestCase 25
+//                                 ...
 
 #if 0
 Suite Fixture SetUp() - static
@@ -76,7 +77,22 @@ protected:
 		printf("~DatabaseTest()\n");
 	}
 
-	// static
+#if 0
+	// 1.10 이전
+	static void SetUpTestCase() {
+		printf("SetUpTestSuite()\n");
+		db = new Database;
+		db->Connect();
+	}
+
+	static void TearDownTestCase() {
+		printf("TearDownTestSuite()\n");
+		db->Disconnect();
+		delete db;
+	}
+#endif
+#if 1
+	// 1.10 이후
 	static void SetUpTestSuite() {
 		printf("SetUpTestSuite()\n");
 		db = new Database;
@@ -88,6 +104,7 @@ protected:
 		db->Disconnect();
 		delete db;
 	}
+#endif
 
 	void SetUp() override {
 		printf("SetUp()\n");
