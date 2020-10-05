@@ -10,7 +10,7 @@
 //    Test
 //    Test
 
-// 1.10 이후
+// 1.10 이후 - xUnit Test Framework이 사용하는 보편적인 용어
 // TestSuite: 동일한 픽스쳐를 가지는 테스트케이스의 집합
 //    TestCase
 //    TestCase

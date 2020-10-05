@@ -101,13 +101,6 @@ class SampleTest.goo : public SampleTest {};
 
 #endif
 
-
-
-
-
-
-
-
 // 픽스쳐 설치 방법 
 // 2. Delegate Setup(위임 설치)
 //   방법: 픽스쳐 설치에 대한 코드를 별도의 테스트 유틸리티 함수를 통해 모듈화한다.
