@@ -90,17 +90,10 @@ TEST(LoggerTest, IsValidFilename_NameShorterThan5Chars_ReturnsFalse) {
 	EXPECT_FALSE(logger.IsValidLogFilename(invalidFilename)) << "파일명이 다섯글자 미만일 때";
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Test Double(테스트 대역)
+//  xUnit Test Pattern
+//   1) Test Stub     => Stub
+//   2) Fake Object   => Fake
+//   3) Test Spy      => Spy
+//   4) Mock Object   => Mock
 
