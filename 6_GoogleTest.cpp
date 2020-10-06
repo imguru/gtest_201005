@@ -186,7 +186,8 @@ TEST(SampleTest2, hoo) {
 //    (Jenkins, Travis CI, Circle CI)
 // $ ./a.out --gtest_output=[xml|json]
 //     => test_detail.xml / test_detail.json
-//
+//     => RecordProperty 확인
+
 // 8. 반복된 테스트(Repeat Test)
 //   => "변덕스러운 테스트"를 체크할 때 사용할 수 있습니다.
 //	$ ./a.out --gtest_repeat=N
