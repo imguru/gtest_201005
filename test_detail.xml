@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="13" failures="0" disabled="2" errors="0" time="0" timestamp="2020-10-06T01:36:37" name="AllTests">
+  <testsuite name="GoogleTest" tests="6" failures="0" disabled="1" errors="0" time="0" timestamp="2020-10-06T01:36:37">
+    <testcase name="Sample1" status="run" result="completed" time="0" timestamp="2020-10-06T01:36:37" classname="GoogleTest" />
+    <testcase name="Sample2" status="run" result="completed" time="0" timestamp="2020-10-06T01:36:37" classname="GoogleTest" />
+    <testcase name="Sample3" status="run" result="completed" time="0" timestamp="2020-10-06T01:36:37" classname="GoogleTest" />
+    <testcase name="Sample4" status="run" result="completed" time="0" timestamp="2020-10-06T01:36:37" classname="GoogleTest" />
+    <testcase name="Sample4_Bad" status="run" result="completed" time="0" timestamp="2020-10-06T01:36:37" classname="GoogleTest" />
+    <testcase name="DISABLED_N_FooTest" status="notrun" result="suppressed" time="0" timestamp="1970-01-01T00:00:00" classname="GoogleTest" />
+  </testsuite>
+  <testsuite name="DISABLED_GoogleTest" tests="1" failures="0" disabled="1" errors="0" time="0" timestamp="1970-01-01T00:00:00">
+    <testcase name="P_FooTest" status="notrun" result="suppressed" time="0" timestamp="1970-01-01T00:00:00" classname="DISABLED_GoogleTest" />
+  </testsuite>
+  <testsuite name="SampleTest1" tests="3" failures="0" disabled="0" errors="0" time="0" timestamp="2020-10-06T01:36:37">
+    <testcase name="foo" status="run" result="completed" time="0" timestamp="2020-10-06T01:36:37" classname="SampleTest1" />
+    <testcase name="goo" status="run" result="completed" time="0" timestamp="2020-10-06T01:36:37" classname="SampleTest1" />
+    <testcase name="hoo" status="run" result="completed" time="0" timestamp="2020-10-06T01:36:37" classname="SampleTest1" />
+  </testsuite>
+  <testsuite name="SampleTest2" tests="3" failures="0" disabled="0" errors="0" time="0" timestamp="2020-10-06T01:36:37">
+    <testcase name="foo" status="run" result="completed" time="0" timestamp="2020-10-06T01:36:37" classname="SampleTest2">
+<properties>
+<property name="cpu" value="1.5"/>
+<property name="mem" value="30%"/>
+</properties>
+    </testcase>
+    <testcase name="goo" status="run" result="completed" time="0" timestamp="2020-10-06T01:36:37" classname="SampleTest2">
+<properties>
+<property name="cpu" value="1.5"/>
+<property name="mem" value="30%"/>
+</properties>
+    </testcase>
+    <testcase name="hoo" status="run" result="completed" time="0" timestamp="2020-10-06T01:36:37" classname="SampleTest2">
+<properties>
+<property name="cpu" value="1.5"/>
+<property name="mem" value="30%"/>
+</properties>
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,165 @@
+{
+  "tests": 13,
+  "failures": 0,
+  "disabled": 2,
+  "errors": 0,
+  "timestamp": "2020-10-06T01:36:34Z",
+  "time": "0.001s",
+  "name": "AllTests",
+  "testsuites": [
+    {
+      "name": "GoogleTest",
+      "tests": 6,
+      "failures": 0,
+      "disabled": 1,
+      "errors": 0,
+      "timestamp": "2020-10-06T01:36:34Z",
+      "time": "0.001s",
+      "testsuite": [
+        {
+          "name": "Sample1",
+          "status": "RUN",
+          "result": "COMPLETED",
+          "timestamp": "2020-10-06T01:36:34Z",
+          "time": "0s",
+          "classname": "GoogleTest"
+        },
+        {
+          "name": "Sample2",
+          "status": "RUN",
+          "result": "COMPLETED",
+          "timestamp": "2020-10-06T01:36:34Z",
+          "time": "0s",
+          "classname": "GoogleTest"
+        },
+        {
+          "name": "Sample3",
+          "status": "RUN",
+          "result": "COMPLETED",
+          "timestamp": "2020-10-06T01:36:34Z",
+          "time": "0s",
+          "classname": "GoogleTest"
+        },
+        {
+          "name": "Sample4",
+          "status": "RUN",
+          "result": "COMPLETED",
+          "timestamp": "2020-10-06T01:36:34Z",
+          "time": "0s",
+          "classname": "GoogleTest"
+        },
+        {
+          "name": "Sample4_Bad",
+          "status": "RUN",
+          "result": "COMPLETED",
+          "timestamp": "2020-10-06T01:36:34Z",
+          "time": "0s",
+          "classname": "GoogleTest"
+        },
+        {
+          "name": "DISABLED_N_FooTest",
+          "status": "NOTRUN",
+          "result": "SUPPRESSED",
+          "timestamp": "1970-01-01T00:00:00Z",
+          "time": "0s",
+          "classname": "GoogleTest"
+        }
+      ]
+    },
+    {
+      "name": "DISABLED_GoogleTest",
+      "tests": 1,
+      "failures": 0,
+      "disabled": 1,
+      "errors": 0,
+      "timestamp": "1970-01-01T00:00:00Z",
+      "time": "0s",
+      "testsuite": [
+        {
+          "name": "P_FooTest",
+          "status": "NOTRUN",
+          "result": "SUPPRESSED",
+          "timestamp": "1970-01-01T00:00:00Z",
+          "time": "0s",
+          "classname": "DISABLED_GoogleTest"
+        }
+      ]
+    },
+    {
+      "name": "SampleTest1",
+      "tests": 3,
+      "failures": 0,
+      "disabled": 0,
+      "errors": 0,
+      "timestamp": "2020-10-06T01:36:34Z",
+      "time": "0s",
+      "testsuite": [
+        {
+          "name": "foo",
+          "status": "RUN",
+          "result": "COMPLETED",
+          "timestamp": "2020-10-06T01:36:34Z",
+          "time": "0s",
+          "classname": "SampleTest1"
+        },
+        {
+          "name": "goo",
+          "status": "RUN",
+          "result": "COMPLETED",
+          "timestamp": "2020-10-06T01:36:34Z",
+          "time": "0s",
+          "classname": "SampleTest1"
+        },
+        {
+          "name": "hoo",
+          "status": "RUN",
+          "result": "COMPLETED",
+          "timestamp": "2020-10-06T01:36:34Z",
+          "time": "0s",
+          "classname": "SampleTest1"
+        }
+      ]
+    },
+    {
+      "name": "SampleTest2",
+      "tests": 3,
+      "failures": 0,
+      "disabled": 0,
+      "errors": 0,
+      "timestamp": "2020-10-06T01:36:34Z",
+      "time": "0s",
+      "testsuite": [
+        {
+          "name": "foo",
+          "status": "RUN",
+          "result": "COMPLETED",
+          "timestamp": "2020-10-06T01:36:34Z",
+          "time": "0s",
+          "classname": "SampleTest2",
+          "cpu": "1.5",
+          "mem": "30%"
+        },
+        {
+          "name": "goo",
+          "status": "RUN",
+          "result": "COMPLETED",
+          "timestamp": "2020-10-06T01:36:34Z",
+          "time": "0s",
+          "classname": "SampleTest2",
+          "cpu": "1.5",
+          "mem": "30%"
+        },
+        {
+          "name": "hoo",
+          "status": "RUN",
+          "result": "COMPLETED",
+          "timestamp": "2020-10-06T01:36:34Z",
+          "time": "0s",
+          "classname": "SampleTest2",
+          "cpu": "1.5",
+          "mem": "30%"
+        }
+      ]
+    }
+  ]
+}

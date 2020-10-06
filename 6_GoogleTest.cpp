@@ -98,6 +98,108 @@ TEST(GoogleTest, Sample4_Bad) {
 	}
 }
 
+// 테스트 커버리지: 테스트 코드에 의해서 실행된 제품 코드의 비율
+//  => 테스트 커버리지는 테스트 코드의 품질의 척도로 사용하면 안됩니다.
+//    이유: 단언문을 사용하지 않는 테스트 코드가 발생할 수 있습니다.
+//          단언문이 존재하지 않으면, 절대 실패하지 않는 단위 테스트..
+
+
+// 2-3개 테스트 케이스가 이상적이다.
+int foo(int a, int b, int c) {
+	if (a < 0) {
+		return -1;
+	}
+
+	if (b < 0) {
+		return -1;
+	}
+
+	if (c < 0) {
+		// return -1;
+		return 0;
+	}
+
+	return a + b + c + 10;
+}
+
+// 5. 테스트 비활성화
+//  => 특정한 테스트 케이스 또는 테스트 스위트가 테스트의 결과에 포함되지 않고, 수행되길 원한다.
+//  => 테스트를 주석 처리 등을 통해 제외하는 것은, '잊혀진 테스트'가 된다.
+//  => xUnit Test Framework은 테스트를 비활성화는 기능을 제공하고 있습니다.
+//     Google Test: 테스트 케이스 또는 테스트 스위트의 이름이 DISABLED_ 접두를 가진다면, 비활성화 됩니다.
+
+//  테스트를 수행할 때, 비활성화된 테스트도 수행하고 싶다면
+//    $ ./a.out --gtest_also_run_disabled_tests
+
+#if 1
+// 2개 - 부정케이스 / 긍정케이스
+//     EXPECT_ : 하나의 테스트 케이스 안에서 여러 검증을 수행할 수 있다.
+TEST(DISABLED_GoogleTest, P_FooTest) {
+	int a = 10;
+	int b = 10;
+	int c = 10;
+
+	EXPECT_EQ(foo(a, b, c), a + b + c) << "foo를 호출하였을 때";
+}
+
+TEST(GoogleTest, DISABLED_N_FooTest) {
+	EXPECT_EQ(foo(-1, 0, 0), -1) << "a가 0보다 작을 때";
+	EXPECT_EQ(foo(0, -1, 0), -1) << "b가 0보다 작을 때";
+	EXPECT_EQ(foo(0, 0, -1), -1) << "c가 0보다 작을 때";
+}
+#endif
+
+TEST(SampleTest1, foo) {}
+TEST(SampleTest1, goo) {}
+TEST(SampleTest1, hoo) {}
+
+int n = 0;
+TEST(SampleTest2, foo) {
+	ASSERT_LT(++n, 300);
+	
+	// 테스트의 결과 말고 추가적인 정보도 로깅하고 싶다.
+	//  - RecordProperty
+	//  => gtest_output=xml|json 
+	//     위의 xml 또는 json 파일에 기록되는 정보입니다.
+	RecordProperty("cpu", "1.5");
+	RecordProperty("mem", "30%");
+}
+
+TEST(SampleTest2, goo) {
+	RecordProperty("cpu", "1.5");
+	RecordProperty("mem", "30%");
+}
+
+TEST(SampleTest2, hoo) {
+	RecordProperty("cpu", "1.5");
+	RecordProperty("mem", "30%");
+}
+
+// 6. Test Filter 기능을 제공합니다.
+// $ ./a.out --gtest_filter=SampleTest*.foo
+// $ ./a.out --gtest_filter=SampleTest1.*
+//  핵심: 테스트케이스의 종류에 따라서, 명확한 이름 규칙을 세우는 것은 독립적인 테스트 실행에 도움이 됩니다.
+
+// 7. Test Result Formatter => XML/JSON
+//   - xUnit Test Framework의 공통된 포맷입니다.
+//    CI와 연계해서, 테스트 결과를 표시할 때 사용할 수 있습니다.
+//    (Jenkins, Travis CI, Circle CI)
+// $ ./a.out --gtest_output=[xml|json]
+//     => test_detail.xml / test_detail.json
+//
+// 8. 반복된 테스트(Repeat Test)
+//   => "변덕스러운 테스트"를 체크할 때 사용할 수 있습니다.
+//	$ ./a.out --gtest_repeat=N
+//	$ ./a.out --gtest_repeat=1000 --gtest_shuffle --gtest_break_on_failure
+//	   --gtest_shuffle: 테스트케이스의 실행 순서를 랜덤으로 섞는다.
+//	   --gtest_break_on_failure: 테스트 실행 중 실패가 발생하면, 이후 테스트를 중지한다.
+
+
+
+
+
+
+
 
 
 
