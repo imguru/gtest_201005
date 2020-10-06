@@ -43,6 +43,8 @@ public:
 	}
 };
 
+//-------------------
+
 #include <gtest/gtest.h>
 
 // UserManager의 Save / Load의 기능을 검증하고자 한다.

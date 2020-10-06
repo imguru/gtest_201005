@@ -27,12 +27,14 @@ public:
 	Player(IConnection* p) : conn(p) {}
 
 	void Move(int x, int y) {
+		//---
 		try {
 			conn->Move(x, y);
 		} catch (NetworkException& e) {
 			printf("NetworkException 처리 로직...\n");
 			throw e;
 		}
+		//---
 	}
 };
 
