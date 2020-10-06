@@ -71,28 +71,3 @@ TEST(DLoggerTest, WriteTest) {
 	EXPECT_TRUE(spy1.IsReceived(testLevel, testMessage));
 	EXPECT_TRUE(spy2.IsReceived(testLevel, testMessage));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
