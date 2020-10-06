@@ -66,9 +66,12 @@ public:
 
 #include <gtest/gtest.h>
 
+// Stub
 class TestFileSystem : public IFileSystem {
 public:
-	bool IsValid(const std::string& filename) { return true; }
+	bool IsValid(const std::string& filename) override { 
+		return true; 
+	}
 };
 
 

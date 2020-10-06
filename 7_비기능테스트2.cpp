@@ -10,6 +10,15 @@
 //      Facebook: jemalloc
 //      : 조건부 컴파일을 활용해서, 테스트 코드에서만 사용하도록 하는 것이 좋습니다.
 
+// new
+// 1. 동적 메모리 할당  - operator new
+// 2. 생성자 호출
+//
+// delete
+// 1. 소멸자 호출
+// 2. 동적 메모리 해지 - operator delete
+
+
 // SUT
 class Image {
 public:
@@ -35,6 +44,10 @@ void foo() {
 	Image* p1 = new Image;
 	Image* p2 = new Image;
 	Image* p3 = new Image;
+
+	delete p1;
+	delete p2;
+	delete p3;
 }
 
 class ImageTest : public testing::Test {
