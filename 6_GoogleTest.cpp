@@ -61,6 +61,43 @@ TEST(GoogleTest, Sample3) {
 	EXPECT_NEAR(a, b, 0.000000001);
 }
 
+// 4. 예외 테스트
+//   : 비정상적인 상태에 도달했을 때, 기대했던 예외가 발생하는지 여부를 검증한다.
+void IsValidFilename(const std::string& filename) {
+	if (filename.empty()) {
+		throw std::invalid_argument("filename should not empty!");
+	}
+
+	// ...
+}
+
+// 중요: 테스트케이스를 작성할 때, 잘못된 형태에서 테스트가 온전히 실패하는지 확인해야 합니다.
+
+// 초기의 예외 검증을 지원하지 않는 단위 테스트 프레임워크에서 사용하는 방법입니다.
+// => Google Test는 아래의 검증을 단언 매크로를 통해 제공하고 있습니다.
+//    EXPECT_THROW: 기대한 예외가 발생하면 성공
+//    EXPECT_ANY_THROW: 예외가 발생하면 성공
+TEST(GoogleTest, Sample4) {
+	// 테스트케이스의 변수명을 작성할 때, 의도가 나타나도록 작성하는 것은 테스트 케이스의 가독성에 좋습니다.
+	std::string emptyFilename = "";
+	
+	EXPECT_THROW(IsValidFilename(emptyFilename), std::invalid_argument) << "빈 파일명을 전달하였을 때";
+	EXPECT_ANY_THROW(IsValidFilename(emptyFilename)) << "빈 파일명을 전달하였을 때";
+}
+
+TEST(GoogleTest, Sample4_Bad) {
+	std::string filename = "";
+
+	try {
+		IsValidFilename(filename);
+		FAIL() << "기대한 예외가 발생하지 않았음.";
+	} catch (std::invalid_argument& e) {
+		SUCCEED();
+	} catch (...) {
+		FAIL() << "기대한 예외가 아닌 다른 예외가 발생하였음.";
+	}
+}
+
 
 
 
