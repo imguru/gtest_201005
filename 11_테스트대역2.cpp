@@ -66,9 +66,16 @@ public:
 
 #include <gtest/gtest.h>
 
+class TestFileSystem : public IFileSystem {
+public:
+	bool IsValid(const std::string& filename) { return true; }
+};
+
+
 // 1. filename이 다섯글자 이상일 때, true를 반환하는지를 검증한다.
 TEST(LoggerTest, IsValidFilename_NameLoggerThan5Chars_ReturnsTrue) {
-	Logger logger;
+	TestFileSystem fs;
+	Logger logger(&fs);
 	std::string validFilename = "valid.log";
 
 	EXPECT_TRUE(logger.IsValidLogFilename(validFilename)) << "파일명이 다섯글자 이상일 때";
@@ -76,7 +83,8 @@ TEST(LoggerTest, IsValidFilename_NameLoggerThan5Chars_ReturnsTrue) {
 
 // 2. filename이 다섯글자 미만일 때, false를 반환하는지를 검증한다.
 TEST(LoggerTest, IsValidFilename_NameShorterThan5Chars_ReturnsFalse) {
-	Logger logger;
+	TestFileSystem fs;
+	Logger logger(&fs);
 	std::string invalidFilename = "bad.log";
 
 	EXPECT_FALSE(logger.IsValidLogFilename(invalidFilename)) << "파일명이 다섯글자 미만일 때";
