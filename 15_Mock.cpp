@@ -16,7 +16,7 @@ class DLogger {
 public:
 	void Write(Level level, const std::string& message) {
 		for (DLoggerTarget* e : targets) {
-			// e->Write(level, message);
+			e->Write(level, message);
 		}
 	}
 	
