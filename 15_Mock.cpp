@@ -45,11 +45,25 @@ struct DLoggerTarget {
 //     Assert                    Act
 //   참고: Google Mock을 제외한 다른 언어의 Mock Framework은 Mock Object를 동적으로 생성합니다.
 //         이유> C++에는 Refelection이 존재하지 않습니다.
+//
+//
+//  ./googletest/googlemock/scripts/generator/gmock_gen.py을 이용하면, 아래 코드를 생성할 수 있습니다.
+//  => 이제 사용하면 안됩니다.
+//  => 1.10 이전까지 사용하던 방법입니다.
+#if 0
+class MockDLoggerTarget : public DLoggerTarget {
+ public:
+  MOCK_METHOD2(Write,
+      void(Level level, const std::string& message));
+};
+#endif
 
 class MockDLoggerTarget : public DLoggerTarget {
 public:
 	MOCK_METHOD2(Write, void (Level level, const std::string& message));
 };
+
+
 
 TEST(DLoggerTarget, WriteTest) {
 	// Arrange
