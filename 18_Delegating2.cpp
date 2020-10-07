@@ -10,16 +10,6 @@ struct Foo {
 	virtual int Sub(int a, int b) = 0;
 };
 
-
-class MockFoo : public Foo {
-public:
-	MOCK_METHOD(int, Add, (int a, int b), (override));
-	MOCK_METHOD(int, Sub, (int a, int b), (override));
-};
-
-// Google Mock을 이용해서, Mocking된 메소드에 대해서,
-// 실제 구현 객체에게 해당 메소드의 동작을 위임하는 것이 가능하다.
-
 class FakeFoo : public Foo {
 public:
 	int Add(int a, int b) override { 
@@ -32,20 +22,29 @@ public:
 	}
 };
 
-// 위임
-// ON_CALL
-//    => .WillByDefault
+class MockFoo : public Foo {
+public:
+	MOCK_METHOD(int, Add, (int a, int b), (override));
+	MOCK_METHOD(int, Sub, (int a, int b), (override));
+
+	void DelegateToFake() {
+		ON_CALL(*this, Add).WillByDefault([this](int a, int b) {
+			return fake.Add(a, b);
+		});
+
+		ON_CALL(*this, Sub).WillByDefault([this](int a, int b) {
+			return fake.Sub(a, b);
+		});
+	}
+
+private:
+	FakeFoo fake;
+};
+
 
 TEST(MockFoo, FooTest) {
 	MockFoo mock;
-	FakeFoo fake;
-	// Delegate - 위임 기능
-	ON_CALL(mock, Add).WillByDefault([&](int a, int b) {
-		return fake.Add(a, b);
-	});
-	ON_CALL(mock, Sub).WillByDefault([&](int a, int b) {
-		return fake.Sub(a, b);
-	});
+	mock.DelegateToFake();
 
 	EXPECT_CALL(mock, Add(10, 20));
 	EXPECT_CALL(mock, Sub(30, 20));
