@@ -16,7 +16,7 @@ class DLogger {
 public:
 	void Write(Level level, const std::string& message) {
 		for (DLoggerTarget* e : targets) {
-			e->Write(level, message);
+			// e->Write(level, message);
 		}
 	}
 	
@@ -26,7 +26,52 @@ public:
 };
 
 //------------------
-#include <gtest/gtest.h>
+#include <gmock/gmock.h>
+#if 0
+struct DLoggerTarget {
+	virtual ~DLoggerTarget() {}
+
+	virtual void Write(Level level, const std::string& message) = 0;
+};
+#endif
+
+// Mock Object 생성 방법.
+// => 코드를 통해 작성하는 것이 아니라, 매크로를 통해 'Mocking 작업'을 수행해야 합니다.
+
+// 1. MOCK_METHOD{인자개수}(메소드 이름, 메소드의 시그니처)
+// 2. Mock Framework을 사용하면, 테스트 케이스의 구성 방법에 변경이 필요합니다. - Google Mock
+//     Arrange                   Arrange
+//     Act            ->         Assert(EXPECT_CALL)
+//     Assert                    Act
+
+class MockDLoggerTarget : public DLoggerTarget {
+public:
+	MOCK_METHOD2(Write, void (Level level, const std::string& message));
+};
+
+TEST(DLoggerTarget, WriteTest) {
+	// Arrange
+	DLogger logger;
+	MockDLoggerTarget mock1, mock2;
+	logger.AddTarget(&mock1);
+	logger.AddTarget(&mock2);
+	Level testLevel = INFO;
+	std::string testMessage = "log_test_message";
+	
+	// Assert
+	EXPECT_CALL(mock1, Write(testLevel, testMessage));
+	EXPECT_CALL(mock2, Write(testLevel, testMessage));
+
+	// Act
+	logger.Write(testLevel, testMessage);
+}
+
+
+
+
+
+
+
 
 // Mock Object Pattern
 //  의도: 함수를 호출하였을 때, 발생하는 부수효과를 관찰할 수 없어서, 테스트 안된 요구사항이 존재한다.

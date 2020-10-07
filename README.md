@@ -18,6 +18,7 @@
 정적 라이브러리를 통해 사용하는 것이 테스트 프레임워크의 신뢰성에 더 좋다.
 
 # 정적 라이브러리 작성 방법
+## Google Test
 ```
 $ googletest/googletest/scripts/fuse_gtest_files.py ~/chansik.yun
 
@@ -26,3 +27,17 @@ $ g++ googletest/googletest/src/gtest_main.cc -c -I.
 $ ar rcv libgtest.a gtest-all.o gtest_main.o
 
 ```
+## Google Mock(Google Test 포함되어 있습니다)
+```
+$ googletest/googlemock/scripts/fuse_gmock_files.py ~/chansik.yun
+# gmock/gmock.h, gtest/gtest.h, ./gmock-gtest-all.cc
+
+$ g++ gmock-gtest-all.cc -c -I.
+$ g++ ./googletest/googlemock/src/gmock_main.cc -c -I.
+
+$ ar rcv libgtest.a gmock-gtest-all.o gmock_main.o
+```
+
+
+
+
