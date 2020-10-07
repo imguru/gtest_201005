@@ -36,21 +36,23 @@ public:
 			return fake.Sub(a, b);
 		});
 	}
-
 private:
 	FakeFoo fake;
 };
 
+using testing::NiceMock;
 
 TEST(MockFoo, FooTest) {
-	MockFoo mock;
+	NiceMock<MockFoo> mock;
 	mock.DelegateToFake();
 
-	EXPECT_CALL(mock, Add(10, 20));
-	EXPECT_CALL(mock, Sub(30, 20));
+	// EXPECT_CALL(mock, Add(10, 20));
+	// EXPECT_CALL(mock, Sub(30, 20));
 
-	printf("%d\n", mock.Add(10, 20));
-	printf("%d\n", mock.Sub(30, 20));
+	EXPECT_EQ(mock.Add(10, 20), 30);
+	EXPECT_EQ(mock.Sub(30, 20), 10);
+	// printf("%d\n", mock.Add(10, 20));
+	// printf("%d\n", mock.Sub(30, 20));
 }
 
 
