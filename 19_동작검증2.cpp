@@ -47,6 +47,7 @@ void goo(Foo* p) {
 	p->First();
 	p->Third();
 	p->Second();
+	p->Second();
 	p->Forth();
 }
 
@@ -62,7 +63,7 @@ TEST(MockTest, Sample2) {
 	Sequence s1, s2;
 
 	EXPECT_CALL(mock, First()).InSequence(s1, s2);
-	EXPECT_CALL(mock, Second()).InSequence(s1);
+	EXPECT_CALL(mock, Second()).Times(2).InSequence(s1);
 	EXPECT_CALL(mock, Third()).InSequence(s2);
 	EXPECT_CALL(mock, Forth()).InSequence(s2);
 
