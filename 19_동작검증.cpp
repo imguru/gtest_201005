@@ -44,8 +44,6 @@ void goo(Foo* p) {
 // 1) 인자 Matcher - Google Mock이 제공하는 강력한 기능
 //  => Matching 규칙에 따라서, 호출 횟수가 달라진다.
 
-using testing::_;
-// Matcher - 모든 것에 매칭된다.
 
 // 2) 횟수 범위 지정(연속 매칭)
 //    AtLeast: 적어도 N번 이상
@@ -68,24 +66,42 @@ TEST(MockTest, Sample2) {
 	goo(&mock);
 }
 
+using testing::_;    // 모든 것에 매칭된다.
+using testing::Lt;   // <
+using testing::Gt;   // >
+using testing::Le;   // <=
+using testing::Ge;   // >=
+using testing::Eq;   // ==
+using testing::Ne;   // !=
+using testing::NotNull; // != null
+using testing::AllOf;  // &&
+using testing::AnyOf;  // ||
+using testing::Not;
 
+void hoo(Foo* p) {
+	p->Add(10, 20);
+	p->Add(11, 21);
+	p->Add(12, 22);
+}
 
+using testing::Matcher;
 
+TEST(MockTest, Sample3) {
+	MockFoo mock;
+	
+	// 첫번째 인자는 10보다 크거나 같고, 두번째 인자는 30보다 작은 함수
+	// EXPECT_CALL(mock, Add(Ge(10), Lt(30))).Times(3);
+	
+	// 첫번째 인자는 10 <= x  && x <= 20 - AllOf(Ge(10), Le(20))
+	// 두번째 인자는 x >= 20 || x < 0;  - AnyOf(Ge(20), Lt(0));
+	// EXPECT_CALL(mock, Add(AllOf(Ge(10), Le(20)), AnyOf(Ge(20), Lt(0)))).Times(3);
+	Matcher<int> firstArg = AllOf(Ge(10), Le(20));
+	Matcher<int> secondArg = AnyOf(Ge(20), Le(0));
 
+	// auto firstArg = AllOf(Ge(10), Le(20));
+	// auto secondArg = AnyOf(Ge(20), Le(0));
+	EXPECT_CALL(mock, Add(firstArg, secondArg)).Times(3);
 
-
-
-
-
-
-
-// 3. 호출 순서
-
-
-
-
-
-
-
-
+	hoo(&mock);
+}
 
