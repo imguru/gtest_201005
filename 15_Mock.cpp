@@ -43,6 +43,8 @@ struct DLoggerTarget {
 //     Arrange                   Arrange
 //     Act            ->         Assert(EXPECT_CALL)
 //     Assert                    Act
+//   참고: Google Mock을 제외한 다른 언어의 Mock Framework은 Mock Object를 동적으로 생성합니다.
+//         이유> C++에는 Refelection이 존재하지 않습니다.
 
 class MockDLoggerTarget : public DLoggerTarget {
 public:
