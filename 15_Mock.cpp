@@ -60,7 +60,12 @@ class MockDLoggerTarget : public DLoggerTarget {
 
 class MockDLoggerTarget : public DLoggerTarget {
 public:
-	MOCK_METHOD2(Write, void (Level level, const std::string& message));
+	// 1.10 이전 
+	// MOCK_METHOD2(Write, void (Level level, const std::string& message));
+	
+	// 1.10 이후
+	// virtual void Write(Level level, const std::string& message) = 0;
+	MOCK_METHOD(void, Write, (Level level, const std::string& message));
 };
 
 
