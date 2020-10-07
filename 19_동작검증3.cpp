@@ -23,9 +23,10 @@ public:
 TEST(MockTest, Sample) {
 	MockFoo mock;
 
-	// EXPECT_CALL 단독 사용 - 1번
-	// EXPECT_CALL / WillOnce N번 - N번
-	// (EXPECT_CALL / WillOnce) => N번  WillRepeatedly - atLeast N번
+	// 1. EXPECT_CALL 단독 사용 - 1번
+	// 2. EXPECT_CALL / WillOnce N번 - N번
+	// 3. (EXPECT_CALL / WillOnce) => N번  WillRepeatedly - atLeast N번
+	// 4. EXPECT_CALL + WillRepeatedly => AnyNumber
 
 	EXPECT_CALL(mock, GetValue)
 		.WillOnce([] {

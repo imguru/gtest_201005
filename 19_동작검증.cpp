@@ -105,3 +105,50 @@ TEST(MockTest, Sample3) {
 	hoo(&mock);
 }
 
+class User {
+public:
+	MOCK_METHOD(void, A, ());
+	MOCK_METHOD(void, B, ());
+	MOCK_METHOD(void, C, ());
+	MOCK_METHOD(void, D, ());
+};
+
+void koo(User* p) {
+	p->A();
+	p->A();
+	p->C();
+	p->C();
+	p->D();
+	p->D();
+	p->D();
+	p->C();
+}
+
+TEST(UserTest, Sample1) {
+	User mock;
+	
+	EXPECT_CALL(mock, C).Times(3);
+
+	koo(&mock);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
